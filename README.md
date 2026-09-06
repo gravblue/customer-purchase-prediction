@@ -30,7 +30,7 @@ Dataset: [Online Shoppers Intention](https://www.kaggle.com/datasets/henrysue/on
 4. **EDA (Clean Data)** = validasi ulang statistik dan korelasi setelah cleaning.
 5. **Data Preprocessing** = train-test split (80:20, stratified), one-hot encoding untuk `Month` dan `VisitorType` (fit dari train, lalu disesuaikan ke test agar tidak bocor), Outlier Handling (capping pada persentil ke-99 untuk fitur durasi).
 7. **Modeling** = Random Forest dan XGBoost, masing-masing dalam pipeline `SMOTE → classifier`, dituning dengan `RandomizedSearchCV` (scoring `f1`, `StratifiedKFold` 5-fold).
-8. **Evaluasi** = accuracy, precision, recall, F1-score, ROC-AUC, confusion matrix, ROC curve, precision-recall curve.
+8. **Evaluasi** = accuracy, precision, recall, F1-score, ROC-AUC
 9. **Feature Importance** = perbandingan fitur paling berpengaruh dari kedua model.
 
 ## 🏆 Hasil 
