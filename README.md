@@ -1,6 +1,6 @@
 # 🛒 Customer Purchase Prediction 
 
-Proyek machine learning untuk memprediksi apakah pengunjung sebuah situs e-commerce akan melakukan pembelian (`Revenue`) berdasarkan perilaku mereka selama browsing, menggunakan **Random Forest** dan **XGBoost** dengan penanganan class imbalance via **SMOTE**.
+Proyek machine learning untuk memprediksi apakah pengunjung sebuah situs e-commerce akan melakukan pembelian (`Revenue`) berdasarkan perilaku mereka selama browsing, menggunakan **Random Forest** dan **XGBoost** dengan penanganan class imbalance via SMOTE.
 
 ## 🎯 Business Problem
 
