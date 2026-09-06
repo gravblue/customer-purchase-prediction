@@ -22,20 +22,19 @@ Dataset: [Online Shoppers Intention](https://www.kaggle.com/datasets/henrysue/on
 | Kategorikal | `Month`, `VisitorType` |
 | Boolean | `Weekend`, `Revenue` (target) |
 
-## 🔄 Alur Notebook
+## 🔄 Alur 
 
 1. **Data Understanding** — cek struktur, tipe data, missing value, dan duplikat.
 2. **EDA (Raw Data)** — distribusi target, korelasi fitur numerik terhadap `Revenue`, conversion rate per `VisitorType`/`Weekend`/`Month`, deteksi outlier ekstrem pada fitur durasi menggunakan percentile check (bukan IQR, karena data skewed).
 3. **Data Cleaning** — hapus duplikat, konversi kolom boolean ke integer.
 4. **EDA (Clean Data)** — validasi ulang statistik dan korelasi setelah cleaning.
-5. **Data Preprocessing** — train-test split (80:20, stratified), one-hot encoding untuk `Month` dan `VisitorType` (fit dari train, lalu disesuaikan ke test agar tidak bocor).
-6. **Outlier Handling** — capping pada persentil ke-99 untuk fitur durasi, ambang batas dihitung dari `X_train` saja untuk mencegah data leakage.
+5. **Data Preprocessing** — train-test split (80:20, stratified), one-hot encoding untuk `Month` dan `VisitorType` (fit dari train, lalu disesuaikan ke test agar tidak bocor), Outlier Handling (capping pada persentil ke-99 untuk fitur durasi).
 7. **Modeling** — Random Forest dan XGBoost, masing-masing dalam pipeline `SMOTE → classifier`, dituning dengan `RandomizedSearchCV` (scoring `f1`, `StratifiedKFold` 5-fold).
 8. **Evaluasi** — accuracy, precision, recall, F1-score, ROC-AUC, confusion matrix, ROC curve, precision-recall curve.
 9. **Feature Importance** — perbandingan fitur paling berpengaruh dari kedua model.
 10. **Kesimpulan** — ringkasan insight dan hasil model.
 
-## 🏆 Hasil Utama
+## 🏆 Hasil 
 
 | Metrik | Random Forest | XGBoost |
 |---|---|---|
@@ -45,7 +44,7 @@ Dataset: [Online Shoppers Intention](https://www.kaggle.com/datasets/henrysue/on
 | Precision (kelas pembeli) | ~0.64–0.65 | ~0.64–0.65 |
 | Recall (kelas pembeli) | ~0.75 | ~0.75 |
 
-**Insight kunci:**
+**Insight:**
 - Terdapat class imbalance signifikan: dari 12.205 data bersih, hanya 15,6% (1.908 visitor) yang melakukan pembelian.
 - `PageValues` adalah fitur dengan korelasi positif terkuat terhadap `Revenue` (0,49) dan konsisten menjadi fitur paling penting di kedua model.
 - `ExitRates` berkorelasi negatif (-0,20) terhadap pembelian.
@@ -64,17 +63,3 @@ xgboost
 imbalanced-learn
 kaggle
 ```
-
-## 🚀 Cara Menjalankan
-
-1. Buka notebook `RF_XGBoost_SMOTE_Paling_Bener.ipynb` di Google Colab (notebook ini menggunakan `google.colab.drive` dan Kaggle API untuk mengunduh dataset).
-2. Siapkan `kaggle.json` (API token Kaggle) di Google Drive pada path `MyDrive/kaggle.json`.
-3. Jalankan seluruh cell secara berurutan dari atas ke bawah.
-
-> Jika ingin menjalankan di luar Colab, ganti bagian `drive.mount` dan pengunduhan Kaggle dengan pembacaan file CSV secara lokal, lalu install dependencies di atas.
-
-## 🧩 Struktur Metodologi Penting
-
-- **Split sebelum encoding & outlier handling** — dilakukan untuk mencegah data leakage dari test set ke train set.
-- **SMOTE hanya diterapkan di dalam pipeline saat training** (`sampling_strategy=0.5`), sehingga tidak memengaruhi data test.
-- **Outlier capping** menggunakan ambang p99 yang dihitung dari `X_train`, lalu diterapkan ke `X_train` dan `X_test`.
