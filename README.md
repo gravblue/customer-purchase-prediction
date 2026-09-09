@@ -37,11 +37,11 @@ Dataset: [Online Shoppers Intention](https://www.kaggle.com/datasets/henrysue/on
 
 | Metrik | Random Forest | XGBoost |
 |---|---|---|
-| F1-Score | 0.6958 | 0.6875 |
-| ROC-AUC | 0.9331 | 0.9334 |
-| Accuracy | ~89–90% | ~89–90% |
-| Precision (kelas pembeli) | ~0.64–0.65 | ~0.64–0.65 |
-| Recall (kelas pembeli) | ~0.75 | ~0.75 |
+| F1-Score | 70% | 69% |
+| ROC-AUC | 93% | 93% |
+| Accuracy | 90% | 89% |
+| Precision (kelas pembeli) | 65% | 64% |
+| Recall (kelas pembeli) | 75% | 75% |
 
 **Insight:**
 - Terdapat class imbalance signifikan: dari 12.205 data bersih, hanya 15,6% (1.908 visitor) yang melakukan pembelian.
