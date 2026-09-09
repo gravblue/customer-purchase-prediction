@@ -9,8 +9,8 @@ Tidak semua visitor pada situs e-commerce melakukan pembelian, sehingga sulit un
 **Tujuan:** Memprediksi apakah seorang pengunjung website berpotensi melakukan pembelian berdasarkan perilaku mereka selama mengunjungi website, sekaligus memahami faktor-faktor yang paling berpengaruh.
 
 **Target variable:** `Revenue`
-- `True` = melakukan pembelian
-- `False` = tidak melakukan pembelian
+- `True`: melakukan pembelian
+- `False`: tidak melakukan pembelian
 
 ## 📊 Dataset
 
@@ -24,14 +24,14 @@ Dataset: [Online Shoppers Intention](https://www.kaggle.com/datasets/henrysue/on
 
 ## 🔄 Alur 
 
-1. **Data Understanding** = cek struktur, tipe data, missing value, dan duplikat.
-2. **EDA (Raw Data)** = distribusi target, korelasi fitur numerik terhadap `Revenue`, conversion rate per `VisitorType`/`Weekend`/`Month`, deteksi outlier ekstrem pada fitur durasi menggunakan percentile check (bukan IQR, karena data skewed).
-3. **Data Cleaning** = hapus duplikat, konversi kolom boolean ke integer.
-4. **EDA (Clean Data)** = validasi ulang statistik dan korelasi setelah cleaning.
-5. **Data Preprocessing** = train-test split (80:20, stratified), one-hot encoding untuk `Month` dan `VisitorType` (fit dari train, lalu disesuaikan ke test agar tidak bocor), Outlier Handling (capping pada persentil ke-99 untuk fitur durasi).
-7. **Modeling** = Random Forest dan XGBoost, masing-masing dalam pipeline `SMOTE → classifier`, dituning dengan `RandomizedSearchCV` (scoring `f1`, `StratifiedKFold` 5-fold).
-8. **Evaluasi** = accuracy, precision, recall, F1-score, ROC-AUC
-9. **Feature Importance** = perbandingan fitur paling berpengaruh dari kedua model.
+1. **Data Understanding**: cek struktur, tipe data, missing value, dan duplikat.
+2. **EDA (Raw Data)**: distribusi target, korelasi fitur numerik terhadap `Revenue`, conversion rate per `VisitorType`/`Weekend`/`Month`, deteksi outlier ekstrem pada fitur durasi menggunakan percentile check (bukan IQR, karena data skewed).
+3. **Data Cleaning**: hapus duplikat, konversi kolom boolean ke integer.
+4. **EDA (Clean Data)**: validasi ulang statistik dan korelasi setelah cleaning.
+5. **Data Preprocessing**: train-test split (80:20, stratified), one-hot encoding untuk `Month` dan `VisitorType` (fit dari train, lalu disesuaikan ke test agar tidak bocor), Outlier Handling (capping pada persentil ke-99 untuk fitur durasi).
+7. **Modeling**: Random Forest dan XGBoost, masing-masing dalam pipeline `SMOTE → classifier`, dituning dengan `RandomizedSearchCV` (scoring `f1`, `StratifiedKFold` 5-fold).
+8. **Evaluasi**: accuracy, precision, recall, F1-score, ROC-AUC
+9. **Feature Importance**: perbandingan fitur paling berpengaruh dari kedua model.
 
 ## 🏆 Hasil 
 
